@@ -54,7 +54,8 @@ public class AuthController {
 	
 	// Process form input data
 	@PostMapping(value="/auth/register")
-	public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, HttpServletRequest request) {
+	public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, 
+			@RequestParam Map<String, String> requestParams, HttpServletRequest request) {
 		
 		// Lookup user in database by e-mail
 		User userEmailExists = userService.findByEmail(user.getEmail());
