@@ -22,7 +22,6 @@ import com.nulabinc.zxcvbn.Zxcvbn;
 import mg.tmr.chalba.auth.auth.service.UserService;
 import mg.tmr.chalba.auth.model.User;
 
-
 @Controller
 public class AuthController {
 	
@@ -36,15 +35,15 @@ public class AuthController {
 		this.userService = userService;
 	}
 	
-	// Return registration form template
-		@GetMapping(value="/auth/login")
-		public ModelAndView showLoginPage(ModelAndView modelAndView, User user){
-			modelAndView.addObject("user", user);
-			modelAndView.setViewName("views/auth/login");
-			return modelAndView;
-		}
+	// SHOW LOGIN PAGE
+	@GetMapping(value= {"/auth/login", "/", "/login"})
+	public ModelAndView showLoginPage(ModelAndView modelAndView, User user){
+		modelAndView.addObject("user", user);
+		modelAndView.setViewName("views/auth/login");
+		return modelAndView;
+	}
 	
-	// Return registration form template
+	// SHOW REGISTRATION FORM
 	@GetMapping(value="/auth/register")
 	public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
 		modelAndView.addObject("user", user);
@@ -52,24 +51,17 @@ public class AuthController {
 		return modelAndView;
 	}
 	
-	// Process form input data
+	// PROCESS REGISTRATION FORM
 	@PostMapping(value="/auth/register")
 	public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid User user, BindingResult bindingResult, 
 			@RequestParam Map<String, String> requestParams, HttpServletRequest request) {
 		
-		// Lookup user in database by e-mail
-		User userEmailExists = userService.findByEmail(user.getEmail());
-		User userNameExists = userService.findByUserName(user.getUserName());
-		
-		System.out.println(userEmailExists);
-		
-		if (userEmailExists != null) {
-			
-			modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
-			modelAndView.setViewName("views/auth/register");
-			bindingResult.reject("email");
+		// Lookup user in database
+		User userNameExists = null;
+		if (user.getUserName() != null) {
+			userNameExists = userService.findByUserName(user.getUserName());
 		}
-		
+				
 		if (userNameExists != null) {
 			
 			modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the username provided.");
@@ -78,7 +70,17 @@ public class AuthController {
 		}
 		
 		if (bindingResult.hasErrors()) { 
-			modelAndView.setViewName("views/auth/register");		
+			
+			//===================================================
+			System.out.println("===================================");
+			System.out.println("\n\n");
+			System.out.println(bindingResult.getAllErrors());
+			System.out.println("\n\n");
+			System.out.println("===================================");
+		    //===================================================   
+			
+			modelAndView.setViewName("views/auth/register");
+			
 		} else { // new user so we create user and send confirmation e-mail
 					
 			// Disable user until they click on confirmation link in email
@@ -86,7 +88,6 @@ public class AuthController {
 		      
 		    // Generate random 36-character string token for confirmation link
 			user.setConfirmationToken(UUID.randomUUID().toString());
-		    
 		    
 		    Zxcvbn passwordCheck = new Zxcvbn();
 			
@@ -108,7 +109,7 @@ public class AuthController {
 			
 			userService.saveUser(user);
 				
-			modelAndView.addObject("confirmationMessage", "Registration Successfull");
+			modelAndView.addObject("confirmationMessage", "Registration Successfull. You Can Login");
 			modelAndView.setViewName("views/auth/login");
 		}
 			
@@ -131,6 +132,15 @@ public class AuthController {
 		modelAndView.setViewName("set_password");
 		return modelAndView;		
 	}
+	
+	// Return registration form template
+	@GetMapping(value="/no_role")
+	public ModelAndView showNoRolePage(ModelAndView modelAndView, User user){
+		modelAndView.addObject("user", user);
+		modelAndView.setViewName("views/dash/no_role");
+		return modelAndView;
+	}
+		
 	
 	// Process confirmation link
 	@PostMapping(value="/auth/setpassword")
