@@ -28,20 +28,27 @@
       <hr />
       <h4>Set Your Password</h4>
 
+	 <!-- ============= START ERROR MESSAGES ============= -->  
       <div th:if="${successMessage}" class="alert alert-success"
         role="alert" th:text=${successMessage}></div>
 
       <div th:if="${errorMessage}" class="alert alert-danger"
         role="alert" th:text=${errorMessage}></div>
         
+      <div th:if="${alreadyRegisteredMessage}" class="alert alert-danger"
+        role="alert" th:text=${alreadyRegisteredMessage}></div>
+        
       <div th:if="${invalidToken}" class="alert alert-danger"
         role="alert" th:text=${invalidToken}></div>
-        
+      <!-- ============= END ERROR MESSAGES ============= -->  
+      
+      <!-- ===============START REGISTRATION FORM =============== -->
       <form th:if="!${invalidToken}" class="m-t" id="passwordForm" role="form" action="#"
        th:object="${user}" th:action="@{/auth/register}" method="post">
 
         <input type="hidden" name="token" th:value=${confirmationToken}  >
 
+		<!-------------- USERNAME ------------->  
 		<div class="form-group input-group has-feedback">
           <label th:if="${#fields.hasErrors('userName')}"
             th:errors="*{userName}" class="validation-message"></label>
@@ -55,6 +62,7 @@
             aria-hidden="true"></span>
         </div>
         
+        <!-------------- PASSWORD ------------->  
         <div class="form-group input-group">
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-lock"></span>
@@ -65,6 +73,7 @@
             aria-hidden="true"></span>
         </div>
 
+		<!-------------- CONFIRM PASSWORD -------------> 
         <div class="form-group input-group has-feedback">
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-lock"></span>
