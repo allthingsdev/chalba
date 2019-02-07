@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h2>User has no role assigned</h2>
+<a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
+
+   <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+      <input type="submit" value="Sign Out"/>
+   </form> 
+</body>
+</html>

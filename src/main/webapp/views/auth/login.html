@@ -8,6 +8,10 @@
         <p th:if="${param.error}">
             Bad Credentials  
         </p>
+        <div> <p th:if="${confirmationMessage}" 
+        role="alert" th:text=${confirmationMessage}></p>
+        </div>
+        
         <form th:action="@{/login}" method="POST">
             User Name : <input type="text" name="username"/> <br/><br/>
             Password: <input type="password" name="password"/> <br/><br/>

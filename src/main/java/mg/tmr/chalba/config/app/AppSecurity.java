@@ -27,12 +27,17 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login/**").permitAll()
 	            .anyRequest().authenticated()
 	        .and()
-            .formLogin()
-	            .loginPage("/login")
-	            .permitAll()
+	            .formLogin()
+		            .loginPage("/login").permitAll()
+		            .defaultSuccessUrl("/no_role", true)
+		            .failureUrl("/auth/login")
             .and()
-            .logout()
-            	.permitAll();	 
+	            .logout()
+	            	.permitAll()
+	            	.logoutUrl("/logout")
+	            	.invalidateHttpSession(true)
+	            	.deleteCookies("JSESSIONID")
+	            	.logoutSuccessUrl("/login");	 
 	}
 	
 	@Autowired
