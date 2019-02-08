@@ -66,16 +66,14 @@ public class AuthController {
 			
 			modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the username provided.");
 			modelAndView.setViewName("views/auth/register");
-			bindingResult.reject("username");
+			bindingResult.reject("userName");
 		}
 		
 		if (bindingResult.hasErrors()) { 
 			
 			//===================================================
 			System.out.println("===================================");
-			System.out.println("\n\n");
-			System.out.println(bindingResult.getAllErrors());
-			System.out.println("\n\n");
+			System.out.println("\n\n" + bindingResult.getAllErrors() + "\n\n");
 			System.out.println("===================================");
 		    //===================================================   
 			
