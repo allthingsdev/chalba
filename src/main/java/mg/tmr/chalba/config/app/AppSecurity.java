@@ -29,6 +29,8 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 	        .and()
 	            .formLogin()
 		            .loginPage("/login").permitAll()
+		            .usernameParameter("userName")
+		            .passwordParameter("password")
 		            .defaultSuccessUrl("/no_role", true)
 		            .failureUrl("/auth/login")
             .and()
