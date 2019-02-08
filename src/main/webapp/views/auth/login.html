@@ -1,23 +1,95 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title> Spring 4 Security + Thymeleaf Integration Example </title>
-    </head>
-    <body>
-        <h3> Spring 4 Security + Thymeleaf Integration Example </h3> 
-        <p th:if="${param.error}">
-            Bad Credentials  
-        </p>
-        <div> <p th:if="${confirmationMessage}" 
-        role="alert" th:text=${confirmationMessage}></p>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="icon" href="favicon.ico" />
+
+<title>LOGIN</title>
+
+<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+	<link th:href="@{/css/register.css}" rel="stylesheet" />
+	<link th:href="@{/css/fv.css}" rel="stylesheet" />
+	
+</head>
+
+<body class="gray-bg">
+
+  <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+    
+      <hr />
+      <h4>LOGIN</h4>
+
+	 <!-- ============= START ERROR MESSAGES ============= -->  
+      <div th:if="${successMessage}" class="alert alert-success"
+        role="alert" th:text=${successMessage}></div>
+
+      <div th:if="${errorMessage}" class="alert alert-danger"
+        role="alert" th:text=${errorMessage}></div>
+        
+      <!-- ============= END ERROR MESSAGES ============= -->  
+      
+      <!-- ===============START REGISTRATION FORM =============== -->
+      <form class="m-t" role="form" th:action="@{/login}" method="post">
+
+        <!-------------- USERNAME ------------->  
+		<div class="form-group input-group has-feedback">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+          
+          <input type="text" name="userName"
+            placeholder="User Name" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+            aria-hidden="true"></span>
         </div>
         
-        <form th:action="@{/login}" method="POST">
-            User Name : <input type="text" name="username"/> <br/><br/>
-            Password: <input type="password" name="password"/> <br/><br/>
-            <input type="submit" value="Login"/>
-            
-        </form>
-        <div><a th:href="@{/auth/register}">Register</a></div>
-    </body>
-</html> 
+        <!-------------- PASSWORD ------------->  
+        <div class="form-group input-group">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-lock"></span>
+          </span>
+          <input name="password" type="password" id="password"  
+            placeholder="Password" class="form-control" required />
+          <span class="glyphicon"
+            aria-hidden="true"></span>
+        </div>
+
+		<button type="submit"
+          class="btn btn-primary block full-width m-b">Login
+        </button>
+
+      </form>
+      <div>
+          <a class="btn btn-primary block full-width m-b" th:href="@{/auth/register}">Register</a>
+      </div>
+
+     
+    </div>
+  </div>
+
+  <!-- jQuery-->
+  <script th:src="@{/webjars/jquery/1.12.4/jquery.min.js}"></script> 
+
+  <!-- Bootstrap -->
+  <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+   <!-- Password Strength -->
+   	<script th:src="@{/js/zxcvbn.js}"></script>
+  
+  	<script th:src="@{/js/fv.min.js}"></script>
+ 	<script th:src="@{/js/set_password.js}"></script>
+	});
+ 
+
+</body>
+
+</html>

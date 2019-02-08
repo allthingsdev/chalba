@@ -26,7 +26,7 @@
     <div>
     
       <hr />
-      <h4>Set Your Password</h4>
+      <h4>REGISTER</h4>
 
 	 <!-- ============= START ERROR MESSAGES ============= -->  
       <div th:if="${successMessage}" class="alert alert-success"
@@ -94,6 +94,9 @@
         </button>
 
       </form>
+      <div>
+          <a class="btn btn-primary block full-width m-b" th:href="@{/auth/login}">Back to Login</a>
+      </div>
 
      
     </div>
