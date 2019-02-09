@@ -17,6 +17,7 @@
 
 	<link th:href="@{/css/register.css}" rel="stylesheet" />
 	<link th:href="@{/css/fv.css}" rel="stylesheet" />
+	<link th:href="@{/css/custom_registration.css}" rel="stylesheet" />
 	
 </head>
 
@@ -26,8 +27,8 @@
     <div>
     
       <hr />
-      <h4>LOGIN</h4>
-
+      <h2 class="reg-form-header">LOGIN</h2>
+	<hr class="reg-hr"/>
 	 <!-- ============= START ERROR MESSAGES ============= -->  
       <div th:if="${successMessage}" class="alert alert-success"
         role="alert" th:text=${successMessage}></div>
@@ -41,35 +42,37 @@
       <form class="m-t" role="form" th:action="@{/login}" method="post">
 
         <!-------------- USERNAME ------------->  
-		<div class="form-group input-group has-feedback">
-          <span class="input-group-addon">
+		<div class="reg-input-form form-group input-group has-feedback">
+          <span class="reg-field-left input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
           </span>
           
           <input type="text" name="userName"
-            placeholder="User Name" class="form-control" required />
+            placeholder="User Name" class="reg-input-field form-control" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
         </div>
         
         <!-------------- PASSWORD ------------->  
         <div class="form-group input-group">
-          <span class="input-group-addon">
+          <span class="reg-field-left input-group-addon">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
           <input name="password" type="password" id="password"  
-            placeholder="Password" class="form-control" required />
-          <span class="glyphicon"
+            placeholder="Password" class="reg-input-field form-control" required />
+          <span class="reg-field-right glyphicon"
             aria-hidden="true"></span>
         </div>
 
+		<hr class="reg-hr"/>
+
 		<button type="submit"
-          class="btn btn-primary block full-width m-b">Login
+          class="varela-normal m-t btn btn-primary block full-width m-b">Login
         </button>
 
       </form>
       <div>
-          <a class="btn btn-primary block full-width m-b" th:href="@{/auth/register}">Register</a>
+          <a class="varela-normal btn btn-primary block full-width m-b" th:href="@{/auth/register}">Go to Registration</a>
       </div>
 
      
