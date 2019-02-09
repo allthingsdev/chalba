@@ -16,6 +16,9 @@ import mg.tmr.chalba.config.service.UserDetailsServiceImpl;
 @EnableWebSecurity
 public class AppSecurity extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -42,9 +45,6 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 	            	.logoutSuccessUrl("/login");	 
 	}
 	
-	@Autowired
-	private UserDetailsServiceImpl userDetailsService;
-	 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 	  throws Exception {
