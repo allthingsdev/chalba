@@ -1,0 +1,107 @@
+/*==============================================*/
+/*=================[ APP FONTS ]================*/
+/*==============================================*/
+
+/****Varela Round****/
+@font-face {
+  font-family: 'Varela Round';
+  src: url('fonts/VarelaRound/VarelaRound-Regular.otf');
+}
+
+/****OpenSans****/
+@font-face {
+  font-family: OpenSans-Light;
+  src: url('fonts/OpenSans/OpenSans-Light.ttf'); 
+}
+
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url('fonts/OpenSans/OpenSans-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: OpenSans-Bold;
+  src: url('fonts/OpenSans/OpenSans-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: OpenSans-SemiBold;
+  src: url('fonts/OpenSans/OpenSans-SemiBold.ttf'); 
+}
+
+@font-face {
+  font-family: OpenSans-Italic;
+  src: url('fonts/OpenSans/OpenSans-Italic.ttf'); 
+}
+
+/****Ubuntu Fonts****/
+@font-face {
+  font-family: Ubuntu-Light;
+  src: url('fonts/Ubuntu/Ubuntu-L.ttf'); 
+}
+
+@font-face {
+  font-family: UbuntuMono-Regular;
+  src: url('fonts/Ubuntu/UbuntuMono-R.ttf'); 
+}
+
+@font-face {
+  font-family: UbuntuMono-BoldItalic;
+  src: url('fonts/Ubuntu/UbuntuMono-BI.ttf'); 
+}
+
+@font-face {
+  font-family: UbuntuMono-Bold;
+  src: url('fonts/Ubuntu/UbuntuMono-B.ttf'); 
+}
+
+/*==============================================*/
+/*==============[ END APP FONTS ]===============*/
+/*==============================================*/
+
+.reg-form-header{
+  font-family: 'Varela Round';
+  font-size: 20px;
+  color: #172f44;
+}
+
+.reg-input-form{
+  font-family: 'Varela Round';
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.reg-input-field{
+  font-family: OpenSans-Regular;
+  font-size: 16px;
+  font-weight: 500;
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+}
+
+.reg-hr{
+  border: 1px solid #172f44;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.reg-field-right{
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;}
+
+.reg-field-left{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
+}
+
+.varela-normal{
+  font-family: 'Varela Round';
+  font-size: 14px;
+  color: #fff;
+  background-color: #1c3c5c;
+  border-radius: 30px;	
+}

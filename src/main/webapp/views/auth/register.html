@@ -17,6 +17,7 @@
 
 	<link th:href="@{/css/register.css}" rel="stylesheet" />
 	<link th:href="@{/css/fv.css}" rel="stylesheet" />
+	<link th:href="@{/css/custom_registration.css}" rel="stylesheet" />
 	
 </head>
 
@@ -26,8 +27,8 @@
     <div>
     
       <hr />
-      <h4>REGISTER</h4>
-
+      <h2 class="reg-form-header">REGISTER</h2>
+		<hr class="reg-hr"/>
 	 <!-- ============= START ERROR MESSAGES ============= -->  
       <div th:if="${successMessage}" class="alert alert-success"
         role="alert" th:text=${successMessage}></div>
@@ -49,36 +50,36 @@
         <input type="hidden" name="token" th:value=${confirmationToken}  >
 
 		<!-------------- USERNAME ------------->  
-		<div class="form-group input-group has-feedback">
+		<div class="reg-input-form form-group input-group has-feedback">
           <label th:if="${#fields.hasErrors('userName')}"
             th:errors="*{userName}" class="validation-message"></label>
-          <span class="input-group-addon">
+          <span class="reg-field-left input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
           </span>
           
           <input type="text" th:field="*{userName}"
-            placeholder="User Name" class="form-control" required />
-          <span class="glyphicon form-control-feedback"
+            placeholder="User Name" class="reg-input-field form-control" required />
+          <span class="reg-field-right glyphicon form-control-feedback"
             aria-hidden="true"></span>
         </div>
         
         <!-------------- PASSWORD ------------->  
-        <div class="form-group input-group">
-          <span class="input-group-addon">
+        <div class="reg-input form-group input-group">
+          <span class="reg-field-left reg-input-group-addon input-group-addon">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
           <input name="password" type="password" id="password"  
-            placeholder="Password" class="form-control" required />
+            placeholder="Password" class="reg-input-field form-control" required />
           <span class="glyphicon"
             aria-hidden="true"></span>
         </div>
 
 		<!-------------- CONFIRM PASSWORD -------------> 
-        <div class="form-group input-group has-feedback">
-          <span class="input-group-addon">
+        <div class="reg-input form-group input-group has-feedback">
+          <span class="reg-field-left reg-input-group-addon input-group-addon">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
-         <input type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password" name="ConfirmPassword" data-fv-notempty="true"
+         <input type="password" class="reg-input-field form-control" id="signup-password-confirm" placeholder="Confirm Password" name="ConfirmPassword" data-fv-notempty="true"
                                        data-fv-notempty-message="Please confirm password"
                                        data-fv-identical="true"
                                        data-fv-identical-field="password"
@@ -87,15 +88,15 @@
           <div class="help-block with-errors"></div>
         </div>
 
-
+		<hr class="reg-hr"/>
 		
         <button type="submit"
-          class="btn btn-primary block full-width m-b">Save
+          class="varela-normal m-t btn btn-primary block full-width m-b">Register
         </button>
 
       </form>
       <div>
-          <a class="btn btn-primary block full-width m-b" th:href="@{/auth/login}">Back to Login</a>
+          <a class="varela-normal btn btn-primary block full-width m-b" th:href="@{/auth/login}">Back to Login</a>
       </div>
 
      
