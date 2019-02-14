@@ -10,12 +10,19 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import mg.tmr.chalba.auth.auth.service.AppLoginHandler;
 import mg.tmr.chalba.config.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class AppSecurity extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+	
+	@Autowired
+	private AppLoginHandler appLoginHandler;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -31,7 +38,8 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 		            .loginPage("/login").permitAll()
 		            .usernameParameter("userName")
 		            .passwordParameter("password")
-		            .defaultSuccessUrl("/no_role", true)
+		            .successHandler(appLoginHandler)
+		            //.defaultSuccessUrl("/no_role", true)
 		            .failureUrl("/auth/login")
             .and()
 	            .logout()
@@ -42,9 +50,6 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 	            	.logoutSuccessUrl("/login");	 
 	}
 	
-	@Autowired
-	private UserDetailsServiceImpl userDetailsService;
-	 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 	  throws Exception {
@@ -62,7 +67,6 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 	 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		return bCryptPasswordEncoder;
+		return new BCryptPasswordEncoder();
 	}	
 }
