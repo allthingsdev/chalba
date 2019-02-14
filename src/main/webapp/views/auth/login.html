@@ -30,8 +30,8 @@
       <h2 class="reg-form-header">LOGIN</h2>
 	<hr class="reg-hr"/>
 	 <!-- ============= START ERROR MESSAGES ============= -->  
-      <div th:if="${successMessage}" class="alert alert-success"
-        role="alert" th:text=${successMessage}></div>
+      <div th:if="${confirmationMessage}" class="alert alert-success"
+        role="alert" th:text=${confirmationMessage}></div>
 
       <div th:if="${errorMessage}" class="alert alert-danger"
         role="alert" th:text=${errorMessage}></div>

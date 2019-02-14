@@ -36,7 +36,7 @@ public class AuthController {
 	}
 	
 	// SHOW LOGIN PAGE
-	@GetMapping(value= {"/auth/login", "/", "/login"})
+	@GetMapping(value= {"/auth/login", "/login", "/"})
 	public ModelAndView showLoginPage(ModelAndView modelAndView, User user){
 		modelAndView.addObject("user", user);
 		modelAndView.setViewName("views/auth/login");
@@ -109,6 +109,7 @@ public class AuthController {
 				
 			modelAndView.addObject("confirmationMessage", "Registration Successfull. You Can Login");
 			modelAndView.setViewName("views/auth/login");
+			
 		}
 			
 		return modelAndView;
@@ -138,7 +139,6 @@ public class AuthController {
 		modelAndView.setViewName("views/dash/no_role");
 		return modelAndView;
 	}
-		
 	
 	// Process confirmation link
 	@PostMapping(value="/auth/setpassword")
