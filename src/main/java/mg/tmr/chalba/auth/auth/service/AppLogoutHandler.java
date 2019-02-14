@@ -18,8 +18,10 @@ public class AppLogoutHandler implements LogoutSuccessHandler {
 	                                Authentication authentication) throws IOException, ServletException {
 	        if (authentication != null && authentication.getDetails() != null) {
 	            try {
-	                httpServletRequest.getSession().invalidate();
+	            	
+	            	httpServletRequest.getSession().invalidate();
 	                System.out.println("User Successfully Logout");
+	                
 	                //you can add more codes here when the user successfully logs out,
 	                //such as updating the database for last active.
 	            } catch (Exception e) {
@@ -30,5 +32,6 @@ public class AppLogoutHandler implements LogoutSuccessHandler {
 	        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
 	        //redirect to login
 	        httpServletResponse.sendRedirect("/login");
+            
 	    }
 }

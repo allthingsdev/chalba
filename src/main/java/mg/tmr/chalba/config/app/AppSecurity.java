@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import mg.tmr.chalba.auth.auth.service.AppLoginHandler;
+import mg.tmr.chalba.auth.auth.service.AppLogoutHandler;
 import mg.tmr.chalba.config.service.UserDetailsServiceImpl;
 
 @Configuration
@@ -22,6 +23,9 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private AppLoginHandler appLoginHandler;
+	
+	@Autowired
+	private AppLogoutHandler appLogoutHandler;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -39,15 +43,11 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 		            .usernameParameter("userName")
 		            .passwordParameter("password")
 		            .successHandler(appLoginHandler)
-		            //.defaultSuccessUrl("/no_role", true)
 		            .failureUrl("/auth/login")
             .and()
 	            .logout()
 	            	.permitAll()
-	            	.logoutUrl("/logout")
-	            	.invalidateHttpSession(true)
-	            	.deleteCookies("JSESSIONID")
-	            	.logoutSuccessUrl("/login");	 
+	            	.logoutSuccessHandler(appLogoutHandler);	 
 	}
 	
 	@Override
