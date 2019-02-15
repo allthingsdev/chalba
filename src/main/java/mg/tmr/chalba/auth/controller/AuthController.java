@@ -17,8 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
 
-import mg.tmr.chalba.auth.auth.service.UserService;
 import mg.tmr.chalba.auth.model.User;
+import mg.tmr.chalba.auth.service.UserService;
 
 @Controller
 public class AuthController {

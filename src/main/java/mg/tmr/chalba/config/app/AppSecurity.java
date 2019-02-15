@@ -10,8 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import mg.tmr.chalba.auth.auth.service.AppLoginHandler;
-import mg.tmr.chalba.auth.auth.service.AppLogoutHandler;
+import mg.tmr.chalba.auth.service.AppLoginHandler;
+import mg.tmr.chalba.auth.service.AppLogoutHandler;
 import mg.tmr.chalba.config.service.UserDetailsServiceImpl;
 
 @Configuration
