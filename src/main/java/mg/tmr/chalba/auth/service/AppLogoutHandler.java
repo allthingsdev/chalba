@@ -1,4 +1,4 @@
-package mg.tmr.chalba.auth.auth.service;
+package mg.tmr.chalba.auth.service;
 
 import java.io.IOException;
 

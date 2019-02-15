@@ -1,4 +1,4 @@
-package mg.tmr.chalba.auth.auth.service;
+package mg.tmr.chalba.auth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,3 +33,4 @@ public class UserService {
 	}
 
 }
+
